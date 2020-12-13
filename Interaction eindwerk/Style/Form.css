@@ -1,0 +1,1032 @@
+/*------------------------------------*\
+  #FONTS
+\*------------------------------------*/
+
+/* @font-face {
+    font-family: "Clear Sans Web";
+    font-weight: 200;
+    src: url("../fonts/ClearSans-Light-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Clear Sans Web";
+    font-weight: 400;
+    src: url("../fonts/ClearSans-Regular-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Clear Sans Web";
+    font-weight: 600;
+    src: url("../fonts/ClearSans-Medium-webfont.woff") format("woff");
+} */
+
+/*------------------------------------*\
+  #GENERIC
+\*------------------------------------*/
+:root {
+    --global-color-primary:#3385FF;
+    --global-color-primary-light:#4F95FF;
+
+    --global-text-color-dark:black;
+    --global-text-color-light:white;
+    --global-text-color-semi-dark: #032541;
+
+    --global-color-error: #FF3333;
+    
+    --global-fontsize-sm: 0.875rem; /*14px*/
+    --global-fontsize: 16px; 
+    --global-fontsize-lg: 1.5rem; /*24px*/
+
+    --global-width-xsm: 10%;
+    --global-width-sm: 25%;
+    --global-width: 50%;
+    --global-width-lg: 75%;
+    --global-width-xl: 100%;
+
+    --global-lineheight-sm: 0.5rem; /*8px*/
+    --global-lineheight: 1rem; /*16px*/
+    --global-lineheight-lg: 1.5rem; /*24px*/
+    --global-lineheight-xl: 2rem; /*32px*/;
+    --global-lineheight-xxl: 3rem; /*48px*/
+
+    --global-backgroundcolor-neutral:white;
+    --global-backgroundcolor-dark: #032541;
+
+    --global-bordercolor-neutral:white;
+    --global-bordercolor-dark::#032541;
+
+    --global-margin:0 0 24;
+
+    --global-whitespace-xsm: 0.5rem; /*8px*/
+    --global-whitespace-sm: 1rem; /*16px*/ 
+    --global-whitespace: 1.5rem; /*24px*/
+    --global-whitespace-lg: 3rem; /*48px*/
+    --global-whitespace-xl: 4.5rem; /*72px*/
+
+    --global-border: 1px;
+    --global-border-radius-sm: 0.3125rem; /*5px*/
+    --global-border-radius: 0.9375rem; /*15px*/
+    --global-border-radius-lg: 1.5625rem; /*25px*/
+
+    --global-input-error-borderColor: var(--global-color-error);
+    --global-input-focus-borderColor: #064F8C;
+    --global-input-focus-boxShadowColor: #097CD9;
+
+    --global-input-focus-boxShadowSpread: 0 0 3px 3px;
+
+
+        /* --global-whitespace-xl: calc(var(--global-whitespace)*2);
+    --global-whitespace-xxl: calc(var(--global-whitespace)*3);
+    --global-whitespace-xxxl: calc(var(--global-whitespace)*4); */
+}
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+    font-size: var(--global-fontsize); /*16px*/
+    line-height: var(--global-lineheight-lg); /*24px*/
+    background-color:var(--html-background-color ,var(--global-backgroundcolor-neutral));
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: var(--html-color, var(--global-text-color-dark));
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #0053FB;
+    color: white;
+    text-shadow: none;
+}
+
+::selection {
+    background: #0053FB;
+    color: white;
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+  #Elements
+\*------------------------------------*/
+
+/*
+    Elements: Images
+    ---
+    Default markup for images to make them responsive
+*/
+
+img {
+    max-width:var(--global-width-xl);
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: var(--global-fontsize); /*16px*/
+    line-height: var(--global-lineheight-xl); /*32px*/
+    margin: var(--global-margin);
+    font-weight: 400;
+    padding-bottom:var(--global-whitespace-xsm); /*8px*/
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: var(--global-margin);
+}
+
+ul,
+ol {
+    padding-left: var(--global-whitespace);
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: var(--global-margin);
+}
+
+a {
+    color: #1195F7;
+    transition: all .1s ease-in-out;
+}
+
+a:visited,
+a:active,
+a:hover,
+a:focus {
+    color: #8EC7FF;
+}
+
+/*------------------------------------*\
+  #OBJECTS
+\*------------------------------------*/
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+    display: flow-root;                   /* New solution! Fixes margin collapsing */
+    position: relative;
+    padding: 1.5rem 1.5rem 0;
+}
+
+/* size modifiers */
+
+
+.o-row--lg {
+    padding: 3rem 1.5rem 1.5rem;
+}
+.o-row__header {
+    margin-top:var(--global-whitespace-sm);
+    padding-top: 0px;
+}
+
+/* color modifiers */
+
+.o-row--neutral-xxxx-light {
+    background-color: #fff;
+}
+
+@media (min-width: 48rem) { /*768px*/
+    .o-row {
+        padding-left: var(--global-whitespace-lg);
+        padding-right: var(--global-whitespace-lg);
+    }
+
+    .o-row--md {
+        padding-top: var(--global-whitespace-lg);
+        padding-bottom: var(--global-whitespace);
+    }
+
+    .o-row--lg {
+        padding-top: var(--global-whitespace-xl);
+        padding-bottom: var(--global-whitespace-lg);
+    }
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container { 
+    margin-left: auto;  /*margin left en right auto --> gecentreerd*/
+    margin-right: auto; 
+    max-width: 71em;    /* 71 * 18(font html)px = 1278px */
+}
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+    /* overflow-x: hidden; */
+    position: relative;
+    display: flow-root; /* New solution! Fixes margin collapsing */
+}
+
+.o-section + .o-section {
+    padding-top: var(--global-whitespace);
+}
+
+@media (min-width: 48rem) { /*768px*/
+    .o-section--lg + .o-section--lg,
+    .o-section--xl + .o-section--xl {
+        padding-top: var(--global-whitespace-lg);
+    }
+}
+
+@media (min-width: 75rem) { /*1200*/
+    .o-section--xl + .o-section--xl {
+        padding-top: var(--global-whitespace-xl);
+    }
+}
+
+/*
+    Objects: Layout
+    ---
+    The layout object provides us with a column-style layout system. This object
+    contains the basic structural elements, but classes should be complemented
+    with width utilities
+*/
+
+.o-layout {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .o-layout__item {
+        flex-basis: 100%;
+    }
+
+/* gutter modifiers, these affect o-layout__item too */
+
+.o-layout--gutter {
+    margin: 0 -12px;
+}
+
+.o-layout--gutter > .o-layout__item {
+    padding: 0 12px;
+}
+
+.o-layout--gutter-sm {
+    margin: 0 -6px;
+}
+
+.o-layout--gutter-sm > .o-layout__item {
+    padding: 0 6px;
+}
+
+.o-layout--gutter-lg {
+    margin: 0 -24px;
+}
+
+.o-layout--gutter-lg > .o-layout__item {
+    padding: 0 24px;
+}
+
+/* reverse horizontal row modifier */
+
+.o-layout--row-reverse {
+    flex-direction: row-reverse;
+}
+
+/* Horizontal alignment modifiers*/
+
+.o-layout--justify-start {
+    justify-content: flex-start;
+}
+
+.o-layout--justify-end {
+    justify-content: flex-end;
+}
+
+.o-layout--justify-center {
+    justify-content: center;
+}
+
+.o-layout--justify-space-around {
+    justify-content: space-around;
+}
+
+.o-layout--justify-space-evenly {
+    justify-content: space-evenly;
+}
+
+.o-layout--justify-space-between {
+    justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
+
+.o-layout--align-start {
+    align-items: flex-start;
+}
+
+.o-layout--align-end {
+    align-items: flex-end;
+}
+
+.o-layout--align-center {
+    align-items: center;
+}
+
+.o-layout--align-baseline {
+    align-items: baseline;
+}
+
+/* Vertical alignment modifiers that only work if there is one than one flex item */
+
+.o-layout--align-content-start {
+    align-content: start;
+}
+
+.o-layout--align-content-end {
+    align-content: end;
+}
+
+.o-layout--align-content-center {
+    align-content: center;
+}
+
+.o-layout--align-content-space-around {
+    align-content: space-around;
+}
+
+.o-layout--align-content-space-between {
+    align-content: space-between;
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+    list-style: none;
+    padding: 0;
+}
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+/*
+    Component: c-component-dashboard
+    ---
+    Website main logo
+*/
+.c-gutter{
+    margin-bottom: var(--global-whitespace);
+}
+
+.has-error {
+    --label-color: var(--global-color-error);
+    --c-text-bordercolor: var(--global-input-error-borderColor);
+    --input-hover-borderColor: var(--global-input-error-borderColor);
+    --input-focus-borderColor: var(--global-input-error-borderColor);
+    --input-focus-boxShadowColor: var(--global-input-error-boxShadowColor);
+}
+
+.c-text{
+    width: 100% ;
+    padding: var(--global-whitespace-xsm);
+    display: block;
+    border-radius: 15px;
+    border: solid var(--global-border) var(--c-text-bordercolor ,var(--global-bordercolor-dark));
+    margin-bottom: var(--global-whitespace-sm);
+    color: var(--c-text-color ,var(--global-text-color-light));
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    background-color: var(--c-text-background-color, var(--global-backgroundcolor-dark));
+}
+
+.c-text::placeholder{
+    color: var(--c-text-color ,var(--global-text-color-light));
+}
+
+
+.c-button{
+    color: var(--c-button-color , var(--global-text-color-light));
+    font-size: var(--global-fontsize);
+    font-weight: 400;
+    width: var(--global-width);
+    padding: var(--global-whitespace-xsm);
+    display: block;
+    border:solid var(--global-border)  var(--c-button-bordercolor ,var(--global-bordercolor-dark));
+    border-radius: var(--global-border-radius);
+    background-color: var(--c-button-background-color, var(--global-backgroundcolor-dark));
+    font-family: 'Montserrat', sans-serif;
+}
+
+.c-label__error-message {
+    font-weight: 600;
+    font-size: var(--global-fontsize-sm);   
+    line-height: var(--global-lineheight);
+    color: var(--label-color, var(--global-text-color-light));
+    margin-bottom: var(--global-whitespace-xsm);
+    text-align: start;
+}
+
+.c-label__error-message.is-visible {
+	display: block;
+}
+
+.c-input:active,
+.c-input:focus,
+.c-input:focus{
+    outline: none;
+    border: 3px solid;
+    border-color: var(--input-focus-borderColor, var(--global-input-focus-borderColor));
+    box-shadow: var(--global-input-focus-boxShadowSpread) var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
+} 
+
+.c-form-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    /*background-color: red;*/
+    margin-bottom: var(--global-whitespace-sm);
+}
+
+
+.c-input{
+    width: 100% ;
+    padding: var(--global-whitespace-xsm);
+    display: block;
+    border-radius: var(--global-border-radius);
+    border: solid var(--global-border) var(--c-text-bordercolor ,var(--global-bordercolor-dark));
+    margin-bottom: var(--global-whitespace-sm);
+    color: var(--c-text-color ,var(--global-text-color-light));
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    background-color: var(--c-text-background-color, var(--global-backgroundcolor-dark));
+}
+
+.c-input__email{
+    /*background-color: yellow;*/
+    margin-right: var(--global-whitespace-sm); /*16px*/
+}
+
+.c-input__email::placeholder{
+    color: var(--c-text-color ,var(--global-text-color-light));
+}
+
+.c-input__button{
+    /*background-color: purple;*/
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.c-place-dashbord-chart{
+    width: var(--global-width-xl);
+    margin-bottom: var(--global-whitespace-sm);
+}
+.c-place-dashbord__item{
+    flex-basis: 100%;  
+}
+
+.c-place-dashbord__item--text-mod{
+    text-align: center;
+}
+
+.c-place-dashbord__item + .c-place-dashbord__item{
+    margin-top: var(--global-whitespace-sm);
+}
+.c-place-dashbord{
+    display: flex;
+    justify-content: center;
+    width: var(--global-width-xl);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.c-header-balk{
+    display: flex;
+    border-radius: var(--global-border-radius-sm); /*5px*/
+    /*background-color:var(--global-background-color-header);*/
+    width: var(--global-width-lg); /*75%*/
+    height: var(--global-width-lg);
+    justify-content: center;
+    align-items: center;
+    background:linear-gradient(#17A381,#1BBD96,#1ED5A9,#1BBD96,#17A381); 
+  }
+  
+  .c-header-text{
+    display: block;
+    color: var(--global-backgroundcolor-dark);
+    line-height: var(--global-lineheight-xl);
+    font-size: var(--global-fontsize-lg);
+    padding-bottom: 0;
+    font-weight: 600;
+  }
+
+@media (min-width: 48rem) { /*768px*/
+    .c-place-dashbord{
+        justify-content: space-between;
+        width: var(--global-width-xl);
+        flex-wrap: nowrap;
+    }
+    
+    .c-place-dashbord__item{
+        flex-basis: 50%;  
+
+    }
+
+    .c-header-balk{
+        width: var(--global-width); 
+        height: var(--global-width);
+    }
+
+    .c-form-container{
+        flex-direction: row;
+    }
+
+    .c-input__button{
+        width: 25%;
+    }
+
+    .c-input__email{
+        margin-bottom: 0;
+        width: 50%;
+        justify-content: flex-start;
+        margin-right: 0;
+    }
+
+    .c-input__button{
+        justify-content: flex-end;
+        margin-left: 12.5%;
+        margin-right: 12.5%;
+    }
+
+    .c-label {
+        width: 100%;
+        justify-content: flex-start;
+        
+    }
+}
+@media (min-width: 62rem) { /*992px*/
+    .c-text{
+        width: 35%;
+        margin-right: var(--global-whitespace-sm);
+    }
+    .c-button{
+        width: var(--global-width-sm);
+        margin-left: var(--global-whitespace-sm);
+    }
+
+}
+
+@media(min-width: 22.5rem) /*360px*/
+{
+    .c-lead--lg{
+        font-size: var(--global-fontsize-lg);
+        line-height: var(--global-lineheight-xl);
+    }   
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        --html-background-color: var(--global-backgroundcolor-dark);
+        --html-color: var(--global-text-color-light);
+    }
+    .c-input{
+        --c-text-bordercolor: var(--global-bordercolor-neutral);
+        --c-text-color: var(--global-text-color-dark);
+        --c-text-background-color: var(--global-backgroundcolor-neutral);;
+    }
+    .c-input__email::placeholder{
+        --c-text-color: var(--global-text-color-dark);
+    }
+    .c-button{
+        --c-button-color: var(--global-text-color-dark);
+        --c-button-background-color:var(--global-backgroundcolor-neutral);
+        --c-button-bordercolor: var(--global-bordercolor-neutral);
+    }
+}
+
+
+/*------------------------------------*\
+  #UTILITIES
+\*------------------------------------*/
+
+
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+    padding-top: 0 !important;
+}
+
+.u-mb-clear {
+    margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+    margin-bottom: calc(var(--global-whitespace-xsm)/2) !important;
+}
+
+.u-mb-sm {
+    margin-bottom: var(--global-whitespace-xsm) !important;
+}
+
+.u-mb-md {
+    margin-bottom: var(--global-whitespace-sm) !important;
+}
+
+.u-mb-lg {
+    margin-bottom: calc(var(--global-whitespace-sm)*2) !important;
+}
+
+.u-mb-xl {
+    margin-bottom: var(--global-whitespace-lg) !important;
+}
+
+/*
+    Utilities: max-width
+    ---
+    Utility classes to put specific max widths onto elements
+*/
+
+.u-max-width-xs {
+    max-width: 18em !important;
+}
+
+.u-max-width-sm {
+    max-width: 32em !important;
+}
+
+.u-max-width-md {
+    max-width: 42em !important;
+}
+
+.u-max-width-lg {
+    max-width: 60em !important;
+}
+
+.u-max-width-xl {
+    max-width: 70em !important;
+}
+
+.u-max-width-none {
+    max-width: none !important;
+}
+
+/*
+    Utility: Flex
+    ---
+    Utility classes to put specific flex properties onto elements
+    Will be mostly used on o-layout__item
+*/
+
+.u-flex-basis-auto {
+    flex-basis: auto !important;
+}
+
+.u-flex-grow-1 {
+    flex-grow: 1 !important;
+}
+
+.u-1-of-2 {
+    flex-basis: calc(100% / 2) !important;
+}
+
+.u-1-of-3 {
+    flex-basis: calc(100% / 3) !important;
+}
+
+.u-2-of-3 {
+    flex-basis: calc(100% / 3 * 2) !important;
+}
+
+.u-1-of-4 {
+    flex-basis: calc(100% / 4) !important;
+}
+
+.u-3-of-4 {
+    flex-basis: calc(100% / 4 * 3) !important;
+}
+
+.u-1-of-5 {
+    flex-basis: calc(100% / 5) !important;
+}
+
+.u-2-of-5 {
+    flex-basis: calc(100% / 5 * 2) !important;
+}
+
+.u-3-of-5 {
+    flex-basis: calc(100% / 5 * 3) !important;
+}
+
+.u-4-of-5 {
+    flex-basis: calc(100% / 5 * 4) !important;
+}
+
+.u-1-of-6 {
+    flex-basis: calc(100% / 6) !important;
+}
+
+.u-5-of-6 {
+    flex-basis: calc(100% / 6 * 5) !important;
+}
+
+@media (min-width: 576px) {
+    .u-1-of-2-bp1 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp1 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp1 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp1 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp1 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp1 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp1 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp1 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp1 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp1 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp1 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .u-1-of-2-bp2 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp2 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp2 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp2 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp2 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp2 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp2 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp2 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp2 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp2 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp2 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .u-1-of-2-bp3 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp3 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp3 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp3 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp3 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp3 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp3 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp3 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp3 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp3 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp3 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .u-1-of-2-bp4 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp4 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp4 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp4 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp4 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp4 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp4 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp4 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp4 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp4 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp4 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+/*------------------------------------*\
+  #MEDIA
+\*------------------------------------*/
+
+/*
+    Media Queries
+    ---
+    EXAMPLE Media Queries for Responsive Design.
+    These examples override the primary ('mobile first') styles.
+    USE THEM INLINE!
+*/
+
+/* Extra small devices (portrait phones, less than 576px)
+   No media query since this is the default in mobile first design
+*/
+
+/* Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+*/
+
+/* Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+*/
+
+/* Large devices (landscape tablets, desktops, 992px and up)
+@media (min-width: 992px) {}
+*/
+
+/* Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+*/
+
+/*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
