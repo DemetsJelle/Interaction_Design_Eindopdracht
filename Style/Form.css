@@ -50,7 +50,7 @@
     --global-lineheight-xxl: 3rem; /*48px*/
 
     --global-backgroundcolor-neutral:white;
-    --global-backgroundcolor-dark: #032541;
+    --global-backgroundcolor-dark:#032541;
 
     --global-bordercolor-neutral:white;
     --global-bordercolor-dark::#032541;
@@ -445,7 +445,7 @@ a:focus {
     width: 100% ;
     padding: var(--global-whitespace-xsm);
     display: block;
-    border-radius: 15px;
+    border-radius: var(--global-border-radius); /*15px*/
     border: solid var(--global-border) var(--c-text-bordercolor ,var(--global-bordercolor-dark));
     margin-bottom: var(--global-whitespace-sm);
     color: var(--c-text-color ,var(--global-text-color-light));
@@ -479,9 +479,10 @@ a:focus {
     color: var(--label-color, var(--global-text-color-light));
     margin-bottom: var(--global-whitespace-xsm);
     text-align: start;
+    display: none;
 }
 
-.c-label__error-message.is-visible {
+.c-label__error-message--visible {
 	display: block;
 }
 
@@ -519,6 +520,10 @@ a:focus {
 .c-input__email{
     /*background-color: yellow;*/
     margin-right: var(--global-whitespace-sm); /*16px*/
+}
+
+.c-input__email--error{
+    box-shadow: 0 0 3px 3px red;
 }
 
 .c-input__email::placeholder{

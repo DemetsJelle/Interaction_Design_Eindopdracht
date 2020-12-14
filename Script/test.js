@@ -48,6 +48,7 @@ const listenToClickDetails = function(jsonObject)
             ShowDetailsMovie(jsonObject[b.getAttribute("data-counter")], b.getAttribute("data-counter"));
         });
     };
+    overlayResponsive();
 }
 
 const ShowDetailsMovie = function(jsonObject, counter)
