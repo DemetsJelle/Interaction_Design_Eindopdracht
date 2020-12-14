@@ -98,6 +98,10 @@
   --global-border-radius: 0.9375rem; /*15px*/
   --global-border-radius-lg: 1.5625rem; /*25px*/
 
+  --global-input-focus-boxShadowColor: #097CD9;
+
+  --global-input-focus-boxShadowSpread: 0 0 3px 3px;
+
       /* --global-whitespace-xxl: calc(var(--global-whitespace)*2);
   --global-whitespace-xxl: calc(var(--global-whitespace)*3);
   --global-whitespace-xxxl: calc(var(--global-whitespace)*4); */
@@ -261,7 +265,7 @@ hr {
   background-color: var(--global-backgroundcolor-light);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) { /*768px*/
   .o-row {
       padding-left: var(--global-whitespace-xl);
       padding-right: var(--global-whitespace-xl);
@@ -612,6 +616,7 @@ hr {
   margin-top: var(--global-whitespace-xxxsm);
   margin-bottom: var(--global-whitespace-xxxsm);
 }
+
 .c-main-info__text-js
 {
   font-weight: bold;
@@ -636,6 +641,22 @@ hr {
   right: var(--global-whitespace-xl); /*48px*/
 }
 
+.c-close:before {
+  transform: rotate(45deg);
+}
+
+.c-close:after {
+  transform: rotate(-45deg);
+}
+
+.c-close:before, .c-close:after {
+  position: absolute;
+  content: ' ';
+  height: 1rem; /*16px*/
+  width: 0.125rem; /*2px*/
+  background-color: var(--global-text-color-light);
+}
+
 .c-close {
   opacity: var(--global-opacity-x);
 }
@@ -658,22 +679,6 @@ hr {
 .c-close:focus,
 .c-close:hover{
   transform: scale(1.1);
-}
-
-.c-close:before {
-  transform: rotate(45deg);
-}
-
-.c-close:after {
-  transform: rotate(-45deg);
-}
-
-.c-close:before, .c-close:after {
-  position: absolute;
-  content: ' ';
-  height: 1rem; /*16px*/
-  width: 0.125rem; /*2px*/
-  background-color: var(--global-text-color-light);
 }
 
 @keyframes bounce-close{
@@ -796,13 +801,20 @@ hr {
 .c-arrow:hover{
   cursor: pointer;
 }
+
 .c-arrow:hover, .down:hover{
+  border-width: 0 5px 5px 0;
   animation-name: bounce-arrow;
   animation-timing-function: ease;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   transform-origin: bottom;
 }
+
+.c-arrow:focus{
+  border-width: 0 5px 5px 0;
+}
+
 
 .down {
   transform: rotate(45deg);

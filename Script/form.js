@@ -75,7 +75,8 @@ const enableListeners = function () {
 
     if (isValidEmailAddress(email.input.value)) {
       console.log("Form is good to go!");
-      window.location.href = "data.html";
+      console.log("test");
+      
     } else {
       addErrors();
       email.input.addEventListener("input", doubleCheckEmailAddress);

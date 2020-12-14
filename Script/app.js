@@ -1,13 +1,15 @@
 "use strict";
 let html_overview;
 let html_details;
+let html_overlay;
 let teller = 0;
 let detailsTeller = 0;
 let lstGenres ="";
 
+//Animation toevoegen aan de overlay
+
 const ShowMovies = function(jsonObject){
 
-    html_overview.innerHTML="";
     let htmlstring_movies = "";
     
     for(const item of jsonObject.results){
@@ -17,8 +19,8 @@ const ShowMovies = function(jsonObject){
                                         <img src="https://image.tmdb.org/t/p/w200${item.poster_path}" alt="Image Movie"/>
                                     </div>
                                 <div class="c-text">
-                                    <p class="c-title">${item.title}</p>
-                                    <p class="c-date">${item.release_date}</p>
+                                    <p class="c-main-info-panel__text">${item.title}</p>
+                                    <p class="c-main-info-panel__text">${item.release_date}</p>
                                     <p class="js-detailbtn" data-counter=${teller} data-IsVisible=0><i class="c-arrow down" ></i></p>
                                 </div>
                                 <div class="c-details js-details${detailsTeller}">
@@ -43,25 +45,16 @@ const listenToClickDetails = function(jsonObject)
     {
         b.addEventListener("click",function(){
             console.log("button geklikt");
-            if(b.getAttribute("data-IsVisible") == 0)
-            {
-                ShowDetailsMovie(jsonObject[b.getAttribute("data-counter")], b.getAttribute("data-counter"));
-                b.setAttribute("data-IsVisible",1);
-            }
-            else if(b.getAttribute("data-IsVisible") == 1)
-            {
-                CloseDetailsMovie(b.getAttribute("data-counter"));
-                b.setAttribute("data-IsVisible",0);
-            }
-            
+            ShowDetailsMovie(jsonObject[b.getAttribute("data-counter")], b.getAttribute("data-counter"));
         });
     };
+    overlayResponsive();
 }
 
 const ShowDetailsMovie = function(jsonObject, counter)
 {
-    
-    html_overview = document.querySelector(`.js-details${counter}`);
+    //html_overview = document.querySelector(`.js-details${counter}`);
+    console.log("button pressed");
     let genre = "";
     for(const item of lstGenres.genres)
     {
@@ -74,39 +67,41 @@ const ShowDetailsMovie = function(jsonObject, counter)
             }
     }
 
+    html_overlay.classList.remove("c-visible");
+    html_overview.classList.add("c-opacity");
+    html_overview.classList.add("js-overlay_close");
+    html_overlay.classList.add("c-animation-up");
 
-    let htmlstring_details = ` <section class="o-row">
+    let htmlstring_details = `
+    <section class="o-row__overlay">
     <div class="o-container">
         <div class="o-layout o-layout--align-center o-layout--justify-center">
-            <div class ="c-tab">
+            <div class ="c-tab js-animation">
                 <div class="c-upper">
                     <div class="c-image">
-                        <img class="c-pictest" src="https://image.tmdb.org/t/p/w200${jsonObject.poster_path}" alt="Image Movie"/>
+                        <img class ="c-overlay-image" src="https://image.tmdb.org/t/p/w500${jsonObject.poster_path}" alt="Image Movie"/>
                     </div>
     
                     <div class="c-main-info">
                         
                         <div class="c-main-info__textarea">
-                            <p class="c-main-info__text">Titel:</p>
+                            
                             <p class="c-main-info__text-js">${jsonObject.title}</p>
                         </div>
 
                         <div class="c-main-info__textarea">
-                            <p class="c-main-info__text">Datum:</p>
+
                             <p class="c-main-info__text-js">${jsonObject.release_date}</p>
                         </div>
-
-                        <div class="c-main-info__textarea">
-                            <p class="c-main-info__text"><i class="c-arrow down" ></i></p>
-                        </div>
-                        
+    
                     </div>
-                    
+
                     <div class="c-cross">
                         <a href="#" class="c-close js-button-close"></a>
                     </div>
                     
                 </div>
+
                 <div class="c-lower">
                     <div class="c-info-details">
 
@@ -116,8 +111,8 @@ const ShowDetailsMovie = function(jsonObject, counter)
                         </div>
 
                         <div class="c-info-details__textarea">
-                            <p class="c-info-details__text">Language:</p>
-                            <p class="c-info-details__text-js">${jsonObject.original_language}</p>
+                            <p class="c-info-details__text">Rating:</p>
+                            <p class="c-info-details__text-js">${jsonObject.vote_average}</p>
                         </div>
 
                         <div class="c-info-details__textarea">
@@ -134,17 +129,22 @@ const ShowDetailsMovie = function(jsonObject, counter)
 </section>`;
 
     console.log(html_overview)
-    html_overview.innerHTML = htmlstring_details;
+    html_overlay.innerHTML = htmlstring_details;
+
+    listenToClickCloseOverlay();
     
 }
 
-
-const CloseDetailsMovie = function(counter)
+const listenToClickCloseOverlay = function()
 {
-    html_overview = document.querySelector(`.js-details${counter}`);
-    let htmlstring_details = "";
-    html_overview.innerHTML = htmlstring_details;
-};
+    const button = document.querySelector(".js-button-close");
+
+    button.addEventListener("click",function(){
+        html_overlay.classList.add("c-visible");
+        html_overview.classList.remove("c-opacity");
+        
+    });
+}
 
 // 2 De API ophalen.
 const getAPI = async() => {
@@ -179,10 +179,13 @@ const getGenreList = async()=>{
 
 //#region ***  INIT / DOMContentLoaded  ***
 const init = function () {
-    html_overview = document.querySelector(".js-overview")
+    html_overview = document.querySelector(".js-overview");
+    html_overlay = document.querySelector(".js-overlay");
     console.log("init");
+    console.log("test script");
     getAPI();
-    getGenreList()
+    getGenreList();
+
     // getGenreList();
     
 };
